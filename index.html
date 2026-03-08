@@ -1,270 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Time Market - Early Access</title>
-<style>
-  :root {
-    --bg1: #0f173f;
-    --bg2: #4c1f70;
-    --bg3: #192a56;
-    --text: #f8fafc;
-    --muted: #cbd5e1;
-    --card: rgba(15, 23, 63, 0.55);
-    --border: rgba(255, 255, 255, 0.18);
-    --btn: #7c3aed;
-    --btn-hover: #9b5cff;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    margin: 0;
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: var(--text);
-    min-height: 100vh;
-    background: linear-gradient(135deg, var(--bg1) 0%, var(--bg3) 45%, var(--bg2) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px 16px;
-  }
-
-  .container {
-    width: 100%;
-    max-width: 980px;
-    display: grid;
-    grid-template-columns: 1.1fr 1f;
-    gap: 24px;
-    align-items: stretch;
-  }
-
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  }
-
-  .hero {
-    padding: 48px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .badge {
-    align-self: flex-start;
-    background: rgba(124, 58, 237, 0.2);
-    color: #ddd6ff;
-    border: 1px solid rgba(167, 139, 250, 0.45);
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    margin-bottom: 18px;
-  }
-
-  h1 {
-    margin: 0 0 12px;
-    fonsize: clamp(28px, 5vw, 52px);
-    line-height: 1.1;
-    letter-spacing: -0.5px;
-  }
-
-  .subtitle {
-    margin: 0;
-    font-size: clamp(16px, 2.2vw, 19px);
-    line-height: 1.6;
-    color: var(--muted);
-    max-width: 520px;
-  }
-
-  .form-wrap {
-    padding: 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .form-title {
-    margin: 0 0 16px;
-    font-size: 22px;
-    font-weight: 700;
-  }
-
-  form {
-    display: grid;
-    gap: 14px;
-  }
-
-  .field {
-    display: grid;
-    gap: 8px;
-  }
-
-  label {
-    font-size: 14px;
-    color: #e2e8f0;
-    font-weight: 600;
-  }
-
-  input, select {
-    width: 100%;
-    background: rgba(5, 10, 30, 0.5);
-    color: var(--text);
-    border: 1px solid rgba(255, 255, 255, 0.21);
-    border-radius: 12px;
-    padding: 12px 14px;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  input:focus, select:focus {
-    border-color: rgba(155, 135, 245, 0.9);
-    box-shadow: 0 0 0 4px rgba(155, 135, 245, 0.18);
-  }
-
-  .btn {
-    margin-top: 4px;
-    border: none;
-    border-radius: 12px;
-    padding: 13px 16px;
-    font-size: 16px;
-    font-weight: 700;
-    color: white;
-    background: var(--btn);
-    cursor: pointer;
-    transition: transform 0.07s ease, background 0.2s ease, opacity 0.2s ease;
-  }
-
-  .btn:hover {
-    background: var(--btn-hover);
-  }
-
-  .btn:active {
-    transform: translateY(1px);
-  }
-
-  .btn[disabled] {
-    opacity: 0.7;
-    cursor: not-allowed;
-  }
-
-  .message {
-    display: none;
-    margin-top: 8px;
-    padding: 14px 16px;
-    border-radius: 12px;
-    font-weight: 600;
-  }
-
-  .success {
-    background: rgba(34, 197, 94, 0.18);
-    border: 1px solid rgba(74, 222, 128, 0.5);
-    color: #bff7e1;
-  }
-
-  .error {
-    background: rgba(248, 113, 113, 0.18);
-    border: 1px solid rgba(252, 165, 165, 0.5);
-    color: #fec2c2;
-  }
-
-  @media (max-width: 870px) {
-    .container {
-      grid-template-columns: 1fr ;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time Market - Early Access</title>
+  <style>
+    :root {
+      --bg1: #0f173a;
+      --bg2: #4a1982;
+      --card: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.18);
+      --text: #f3f4f6;
+      --muted: #c9d2ff;
+      --accent: #8c70ff;
+      --accent2: #6366f1;
     }
-    .hero {
-      padding: 32px 24px 10px;
-    }
-    .form-wrap {
+
+    * {box-sizing: border-box;}
+
+    body {
+      margin: 0;
+      font-family: Inter, System-UI, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+      display: grid;
+      place-items: center;
       padding: 24px;
     }
-  }
-</style>
+
+    .wrap {
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -0.02tem;
+    }
+
+    .hero p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .label {
+      font-size: 13px;
+      color: #e1e6ff;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .input,
+    select,
+    button {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      font-size: 16px;
+    }
+
+    .input,
+    select {
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.09);
+      color: var(--text);
+      outline: none;
+    }
+
+    .input::placeholder {color: #b5c0f3;}
+
+    .input:focus,
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(140, 112, 255, 0.25);
+    }
+
+    button {
+      padding: 13px 16px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.08s ease, opacity 0.2s ease;
+    }
+
+    button:hover {transform: translateY(-1px);}
+    button:disabled {opacity: 0.75; cursor: not-allowed;}
+
+    .success {
+      margin-top: 16px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(34, 197, 94, 0.18);
+      border: 1px solid rgba(52, 211, 110, 0.45);
+      color: #dbffe8;
+      font-weight: 600;
+      display: none;
+    }
+
+    .waitlist-counter {
+      margin-top: 14px;
+      color: #d6ddff;
+      font-size: 14px;
+      opacity: 0.95;
+    }
+
+    .footer {
+      margin-top: 18px;
+      font-size: 12px;
+      color: #a9b2db;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .card {padding: 24px 18px;}
+      .hero p {font-size: 16px;}
+    }
+  </style>
 </head>
 <body>
-  <main class="container">
-    <section class="card hero">
-      <div class="badge">Time Market</div>
-      <h1>Talk to an expert in 5 minutes</h1>
-      <p class="subtitle">Join the early access waitlist for the app where you can instantly talk to professionals and pay only for the time you use.</p>
-    </section>
+  <main class="wrap">
+    <section class="card">
+      <div class="hero">
+        <h1>Talk to an expert in 5 minutes</h1>
+        <p>Join the early access waitlist for the app where you can instantly talk to professionals and pay only for the time you use.</p>
+      </div>
 
-    <section class="card form-wrap">
-      <h2 class="form-title">Join the Waitlist</h2>
-      <form id="waitlistForm" novalidate>
-        <div class="field">
-          <label for="fullName">Full Name</label>
-          <input id="fullName" name="fullName" type="text" autocomplete="name" required />
+      <form id="waitlist-form">
+        <div>
+          <label class="label" for="fullName">Full Name</label>
+          <input class="input" id="fullName" name="fullName" type="text" required placeholder="Your name" />
         </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required />
+        <div>
+          <label class="label" for="email">Email</label>
+          <input class="input" id="email" name="email" type="email" required placeholder="you@example.com" />
         </div>
-        <div class="field">
-          <label for="role">Role</label>
+        <div>
+          <label class="label" for="role">Role</label>
           <select id="role" name="role" required>
-            <option value="" disabled selected>Select your role</option>
+            <option value="" selected disabled>Select your role</option>
             <option value="Client">Client</option>
             <option value="Expert">Expert</option>
           </select>
         </div>
-        <button class="btn" type="submit" id="submitBtn">Join Early Access</button>
+        <button id="submitBtn" type="submit">Join Early Access</button>
       </form>
-      <div id="successMessage" class="message success">You're on the waitlist!</div>
-      <div id="errorMessage" class="message error">Something went wrong. Please try again.</div>
+
+      <div id="successMessage" class="success">You're on the waitlist!</div>
+      <div id="waitlist-counter" class="waitlist-counter">Join the waitlist today</div>
+      <div class="footer">Time Market • Early Access</div>
     </section>
   </main>
 
   <script>
-    const form = document.getElementById('waitlistForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const successMessage = document.getElementById('successMessage');
-    const errorMessage = document.getElementById('errorMessage');
+    (function() {
+      const form = document.getElementById('waitlist-form');
+      const submitBtn = document.getElementById('submitBtn');
+      const successMessage = document.getElementById('successMessage');
+      const counterEl = document.getElementById('waitlist-counter');
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      errorMessage.style.display = 'none';
-
-      if (!form.reportValidity()) return;
-
-      const payload = {
-        full_name: document.getElementById('fullName').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        role: document.getElementById('role').value,
-        source: 'TikTok'
-      };
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting...';
-
-      try {
-        const response = await fetch('https://hook.us2.make.com/yn1wz8ymu4qct6cue8qk1mex27fkhn66', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
-
-        if (!response.ok) throw new Error('Request failed');
-
-        form.style.display = 'none';
-        successMessage.style.display = 'block';
-      } catch (err) {
-        errorMessage.style.display = 'block';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Join Early Access';
+      async function loadWaitlistCount() {
+        try {
+          const res = await fetch('https://opensheet.elk.sh/1gv0sjE-LvMfe7EFdjknDLRPtCQEedVadFRpsz_-o_U/Лист1');
+          if (!res.ok) throw new Error('Failed to load counter');
+          const data = await res.json();
+          const count = Array.isArray(data) ? data.length : 0;
+          if (count > 0) {
+            counterEl.textContent = `${count} people joined the waitlist`;
+          } else {
+            counterEl.textContent = 'Join the waitlist today';
+          }
+        } catch (e) {
+          counterEl.textContent = 'Join the waitlist today';
+        }
       }
-    });
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Joining...';
+
+        const payload = {
+          full_name: document.getElementById('fullName').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          role: document.getElementById('role').value,
+          source: 'TikTok'
+        };
+
+        try {
+          const response = await fetch('https://hook.us2.make.com/yn1wz8ymu4qct6cue8q+1mex27fkhn66', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          if (!response.ok) throw new Error('Submit failed');
+
+          form.style.display = 'none';
+          successMessage.style.display = 'block';
+        } catch (err) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Join Early Access';
+          alert('Something went wrong. Please try again.');
+        }
+      });
+
+      loadWaitlistCounter();
+    })();
   </script>
 </body>
 </html>
