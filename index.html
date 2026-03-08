@@ -1,5 +1,59 @@
 <!DOCTYPE html>
 <script>
+.hero,
+      .form-section {
+        padding: 32px 24px;
+      }
+    }
+
+    .counter {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="wrap">
+      <div class="hero">
+        <span class="kicker">Time Market</span>
+        <h1>Talk to an expert in 5 minutes</h1>
+        <p class="subtitle">Join the early access waitlist for the app where you can instantly talk to professionals and pay only for the time you use.</p>
+      </div>
+      <div class="form-section">
+        <form id="waitlistForm" novalidate>
+          <div>
+            <label class="label" for="fullName">Full Name</label>
+            <input class="input" id="fullName" name="fullName" type="text" required placeholder="Jane Doe" />
+          </div>
+          <div>
+            <label class="label" for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" required placeholder="you@example.com" />
+          </div>
+          <div>
+            <label class="label" for="role">Role</label>
+            <select id="role" name="role" required>
+              <option value="" disabled selected>Select your role</option>
+              <option value="Client">Client</option>
+              <option value="Expert">Expert</option>
+            </select>
+          </div>
+          <button class="btn" type="submit" id="submitBtn">Join Early Access</button>
+          <div class="message" id="formMessage" aria-live="polite"></div>
+        </form>
+        <div class="success" id="successMessage">You're on the waitlist!</div>
+        <div class="counter" id="waitlistCounter">Join the waitlist today</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
     const form = document.getElementById('waitlistForm');
     const message = document.getElementById('formMessage');
     const success = document.getElementById('successMessage');
@@ -60,4 +114,6 @@
         submitBtn.textContent = 'Join Early Access';
       }
     });
-</script>
+  </script>
+</body>
+</html>
