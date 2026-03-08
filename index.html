@@ -1,194 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Time Market - Early Access</title>
-  <style>
-    :root {
-      --bg1: #0b102d;
-      --bg2: #1a1146;
-      --accent1: #7c44ff;
-      --accent2: #3bb9ff;
-      --text: #f8fafc;
-      --muted: #c7d2fe;
-      --card: rgba(15, 23, 42, 0.65);
-      --border: rgba(199, 210, 254, 0.25);
-
-      .counter {
-  margin-top: 14px;
-  padding: 14px 16px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.04);
-  color: rgba(255,255,255,0.9);
-  font-size: 14px;
-  text-align: center;
-}
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text);
-      min-height: 100vh;
-      background:
-        radial-gradient(1200px 600px at 10% 0%, rgba(124, 68, 255, 0.35) 0%, rgba(124, 68, 255, 0) 60%),
-        radial-gradient(900px 500px at 90% 100%, rgba(59, 130, 246, 0.30) 0%, rgba(59, 130, 246, 0) 60%),
-        linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 55%, #080e2f 100%);
-      display: grid;
-      place-items: center;
-      padding: 24px;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 960px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-      overflow: hidden;
-    }
-
-    .wrap {
-      display: grid;
-      grid-template-columns: 1.1 fr 1fr;
-      min-height: 580px;
-    }
-
-    .hero,
-    .form-section {
-      padding: 48px;
-    }
-
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 12px;
-      background: rgba(199, 210, 254, 0.12);
-      border: 1px solid rgba(199, 210, 254, 0.25);
-      border-radius: 999px;
-      color: #dbe4ff;
-      font-size: 12px;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    h1 {
-      font-size: clamp(20px, 4vw 1 8px, 52px);
-      line-height: 1.1;
-      margin: 18px 0 16px;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      font-size: clamp(15px, 2vw + 8px, 19px);
-      line-height: 1.6;
-      max-width: 440px;
-      margin: 0;
-    }
-
-    .form-section {
-      background: rgba(8, 12, 30, 0.55);
-      border-left: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    form {
-      display: grid;
-      gap: 14px;
-    }
-
-    .label {
-      font-size: 13px;
-      color: #e1e8ff;
-      margin-bottom: 6px;
-      display: inline-block;
-    }
-
-    .input,
-    select {
-      width: 100%;
-      background: rgba(16, 24, 48, 0.9);
-      color: var(--text);
-      border: 1px solid rgba(199, 210, 254, 0.25);
-      border-radius: 12px;
-      padding: 12px 14px;
-      font-size: 15px;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.05s;
-    }
-
-    .input:focus,
-    select:focus {
-      border-color: var(--accent1);
-      box-shadow: 0 0 0 4px rgba(124, 68, 255, 0.25);
-    }
-
-    .btn {
-      margin-top: 4px;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 13px 16px;
-      font-size: 16px;
-      font-weight: 650;
-      cursor: pointer;
-      transition: transform 0.07s ease, opacity 0.2s ease;
-    }
-
-    .btn:active {
-      transform: translateY(1px);
-    }
-
-    .btn[disabled] {
-      opacity: 0.75;
-      cursor: not-allowed;
-    }
-
-    .message {
-      margin-top: 14px;
-      font-size: 14px;
-      color: #bfd3ff;
-      min-height: 20px;
-    }
-
-    .success {
-      display: none;
-      margin-top: 10px;
-      padding: 14px 16px;
-      border-radius: 12px;
-      background: rgba(59, 130, 246, 0.16);
-      border: 1px solid rgba(59, 130, 246, 0.45);
-      color: #e6efff;
-      font-weight: 600;
-    }
-
-    @media (max-width: 900px) {
-      .wrap {
-        grid-template-columns: 1fr ;
-      }
-
-      .form-section {
-        border-left: none;
-        border-top: 1px solid var(--border);
-      }
-
-      .hero,
+.hero,
       .form-section {
         padding: 32px 24px;
       }
+    }
+
+    .counter {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.9);
+      font-size: 14px;
+      text-align: center;
     }
   </style>
 </head>
@@ -232,8 +57,7 @@
     const message = document.getElementById('formMessage');
     const success = document.getElementById('successMessage');
     const submitBtn = document.getElementById('submitBtn');
-
-        const counter = document.getElementById('waitlistCounter');
+    const counter = document.getElementById('waitlistCounter');
 
     async function loadWaitlistCount() {
       try {
@@ -281,7 +105,7 @@
 
         form.style.display = 'none';
         success.style.display = 'block';
-                loadWaitlistCount();
+        loadWaitlistCount();
       } catch (err) {
         message.textContent = 'Something went wrong. Please try again.';
       } finally {
