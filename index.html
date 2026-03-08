@@ -4,17 +4,6 @@
         padding: 32px 24px;
       }
     }
-
-    .counter {
-      margin-top: 14px;
-      padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.9);
-      font-size: 14px;
-      text-align: center;
-    }
   </style>
 </head>
 <body>
@@ -47,7 +36,6 @@
           <div class="message" id="formMessage" aria-live="polite"></div>
         </form>
         <div class="success" id="successMessage">You're on the waitlist!</div>
-        <div class="counter" id="waitlistCounter">Join the waitlist today</div>
       </div>
     </section>
   </main>
@@ -57,26 +45,6 @@
     const message = document.getElementById('formMessage');
     const success = document.getElementById('successMessage');
     const submitBtn = document.getElementById('submitBtn');
-    const counter = document.getElementById('waitlistCounter');
-
-    async function loadWaitlistCount() {
-      try {
-        const res = await fetch('https://opensheet.elk.sh/1gv0sjE-LvMfe7EFdjknDLRPtCQEedVadFRpsz_-o_U/Лист1');
-        if (!res.ok) throw new Error('Counter request failed');
-
-        const rows = await res.json();
-
-        if (counter) {
-          counter.textContent = `${rows.length} people joined the waitlist`;
-        }
-      } catch (err) {
-        if (counter) {
-          counter.textContent = 'Join the waitlist today';
-        }
-      }
-    }
-
-    loadWaitlistCount();
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -105,7 +73,6 @@
 
         form.style.display = 'none';
         success.style.display = 'block';
-        loadWaitlistCount();
       } catch (err) {
         message.textContent = 'Something went wrong. Please try again.';
       } finally {
