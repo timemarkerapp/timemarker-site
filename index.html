@@ -3,257 +3,238 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Time Market – Early Access</title>
+  <title>Time Market — Early Access</title>
   <style>
     :root {
       --bg1: #0b102a;
-      --bg2: #1a134c;
-      --bg3: #2c1768;
-      --text: #f3f4f6;
-      --muted: #b6c2d9;
+      --bg2: #161a4a;
+      --bg3: #2d1263;
       --card: rgba(255, 255, 255, 0.08);
-      --card-border: rgba(255, 255, 255, 0.16);
-      --primary: #7a5cff;
-      --primary-2: #9b59b6;
-      --danger: #ff6b6b;
+      --card-border: rgba(255, 255, 255, 0.18);
+      --text: #ebefff;
+      --muted: #b4bce4;
+      --accent: #7c73ff;
+      --accent2: #4bd1ff;
+      --success: #48dd8b;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: Inter, System-UI, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text);
-      min-height: 100%;
-    }
-
     body {
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(122, 92, 255, 0.22), #0000),
-                radial-gradient(1000px 500px at 90% 90%, rgba(155, 81, 255, 0.18), #0000),
-                linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 45%, var(--bg3) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 32px 16px;
+      margin: 0;
+      font-family: Inter, SystemUI, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(75, 110, 255, 0.3), transparent 60%),
+        radial-gradient(1000px 500px at 100% 0%, rgba(155, 92, 255, 0.28), transparent 60%),
+        linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 45%, var(--bg3) 100%);
+      display: grid;
+      place-items: center;
+      padding: 24px;
     }
 
-    .wrapper {
+    .container {
       width: 100%;
-      max-width: 980px;
-      display: grid;
-      grid-template-columns: 1.1 fr 0.9fr;
-      gap: 24px;
-      align-items: stretch;
+      max-width: 960px;
     }
 
     .card {
-      backdrop-filter: blur(12px);
       background: var(--card);
       border: 1px solid var(--card-border);
       border-radius: 20px;
       padding: 32px;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(10px);
     }
 
     h1 {
-      font-size: clamp(28px, 5vw, 52px);
-      line-height: 1.05;
-      margin: 0 0 14px;
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 52px);
+      line-height: 1.07;
       letter-spacing: -0.02em;
     }
 
     .subtitle {
+      margin: 0 0 28px;
       color: var(--muted);
-      font-size: clamp(15px, 2.2vw, 18px);
+      font-size: clamp(16px, 2.2vw, 20px);
+      max-width: 720px;
       line-height: 1.6;
-      margin: 0;
     }
 
-    .badge {
-      display: inline-block;
-      margin-bottom: 16px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: #e9e7ff;
-      background: rgba(122, 92, 255, 0.25);
-      border: 1px solid rgba(158, 128, 255, 0.45);
-    }
-
-    form {
-      display: grid;
-      gap: 14px;
+    .form-wrap {
+      max-width: 540px;
     }
 
     .field {
-      display: grid;
-      gap: 8px;
+      margin-bottom: 14px;
     }
 
     label {
+      display: block;
       font-size: 14px;
-      color: #d6dcf6;
-      font-weight: 500;
+      color: #cfd6ff;
+      margin-bottom: 8px;
     }
 
-    input, select {
+    input,
+    select {
       width: 100%;
-      padding: 12px 14px;
+      padding: 13px 14px;
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(10, 10, 30, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(10, 14, 37, 0.65);
       color: var(--text);
       font-size: 16px;
       outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
     }
 
-    input:jocus, select:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(122, 92, 255, 0.25);
+    input:focus,
+    select:focus {
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 4px rgba(75, 209, 255, 0.15);
+      background: rgba(10, 14, 37, 0.85);
     }
 
-    .btn {
-      margin-top: 4px;
-      border: none;
-      cursor: pointer;
-      padding: 13px 16px;
+    button {
+      width: 100%;
+      margin-top: 6px;
+      padding: 14px 16px;
+      border: 0;
       border-radius: 12px;
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 650;
       color: white;
-      background: linear-gradient(90deg, var(--primary), var(--primary-2));
-      transition: transform 0.06s ease, opacity 0.2s ease;
+      cursor: pointer;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: transform 0.06s ease, opacity 0.2s ease, filter 0.2s ease;
     }
 
-    .btn:active {
+    button:hover {
+      filter: brightness(1.08);
+    }
+
+    button:active {
       transform: translateY(1px);
     }
 
-    .btn[disabled] {
-      opacity: 0.7;
+    button[disabled] {
+      opacity: 0.75;
       cursor: not-allowed;
     }
 
-    .error {
-      color: var(--danger);
-      font-size: 14px;
-      min-height: 20px;
-    }
-
-    .success {
+    #successMessage {
       display: none;
-      font-size: 22px;
-      font-weight: 700;
-      text-align: center;
-      padding: 40px 20px;
-      border-radius: 16px;
-      background: rgba(74, 222, 128, 0.15);
-      border: 1px solid rgba(74, 222, 128, 0.5);
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(72, 221, 139, 0.15);
+      border: 1px solid rgba(72, 221, 139, 0.45);
+      color: var(--success);
+      font-weight: 600;
     }
 
-    @media (max-width: 880px) {
-      .wrapper {
-        grid-template-columns: 1fr;
-        max-width: 620px;
+    .footnote {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #95a0c2;
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 16px;
       }
       .card {
-        padding: 24px;
+        padding: 22px;
+        border-radius: 16px;
       }
     }
   </style>
 </head>
 <body>
-  <main class="wrapper">
+  <main class="container">
     <section class="card">
-      <div class="badge">Time Market</div>
       <h1>Talk to an expert in 5 minutes</h1>
       <p class="subtitle">Join the early access waitlist for the app where you can instantly talk to professionals and pay only for the time you use.</p>
-    </section>
 
-    <section class="card">
-      <form id="waitlistForm" novalidate>
-        <div class="field">
-          <label for="fullName">Full Name</label>
-          <input id="fullName" name="fullName" type="text" required autocomplete="name" placeholder="John Carter" />
-        </div>
+      <div class="form-wrap">
+        <form id="waitlistForm" novalidate>
+          <div class="field">
+            <label for="fullName">Full Name</label>
+            <input id="fullName" name="fullName" type="text" required autocomplete="name" placeholder="Alex Johnson" />
+          </div>
 
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" />
-        </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" />
+          </div>
 
-        <div class="field">
-          <label for="role">Role</label>
-          <select id="role" name="role" required>
-            <option value="" selected disabled>Select your role</option>
-            <option value="Client">Client</option>
-            <option value="Expert">Expert</option>
-          </select>
-        </div>
+          <div class="field">
+            <label for="role">Role</label>
+            <select id="role" name="role" required>
+              <option value="" disabled selected>Select your role</option>
+              <option value="Client">Client</option>
+              <option value="Expert">Expert</option>
+            </select>
+          </div>
 
-        <button class="btn" type="submit" id="submitBtn">Join Early Access</button>
-        <div class="error" id="errorMsg" aria-live="polite"></div>
-      </form>
+          <button id="submitBtn" type="submit">Join Early Access</button>
+        </form>
 
-      <div class="success" id="successMsg">You're on the waitlist!</div>
+        <div id="successMessage" role="status" aria-live="polite">You're on the waitlist!</div>
+      </div>
     </section>
   </main>
 
   <script>
-    const form = document.getElementById('waitlistForm');
-    const successMsg = document.getElementById('successMsg');
-    const errorMsg = document.getElementById('errorMsg');
-    const submitBtn = document.getElementById('submitBtn');
+    (function () {
+      const form = document.getElementById("waitlistForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const successMessage = document.getElementById("successMessage");
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      errorMsg.textContent = '';
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-      const fullName = document.getElementById('fullName').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const role = document.getElementById('role').value;
-
-      if (!fullName || !email || !role) {
-        errorMsg.textContent = 'Please complete all fields.';
-        return;
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting...';
-
-      const payload = {
-        full_name: fullName,
-        email,
-        role,
-        source: 'TikTok'
-      };
-
-      try {
-        const response = await fetch('https://hook.us2.make.com/yn1wz8ymu4qct6cue8qk1mex27fkhn66', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        if (!response.ok) {
-          throw new Error('Request failed');
+        if (!form.reportValidity()) {
+          return;
         }
 
-        form.style.display = 'none';
-        successMsg.style.display = 'block';
-      } catch (err) {
-        errorMsg.textContent = 'Something went wrong. Please try again.';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Join Early Access';
-      }
-    });
+        const payload = {
+          full_name: document.getElementById("fullName").value.trim(),
+          email: document.getElementById("email").value.trim(),
+          role: document.getElementById("role").value,
+          source: "TikTok"
+        };
+
+        submitBtn.disabled = true;
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = "Joining...";
+
+        try {
+          const response = await fetch("https://hook.us2.make.com/yn1wz8ymu4qct6cue8qk1mex27fkhn66", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+
+          form.style.display = "none";
+          successMessage.style.display = "block";
+        } catch (err) {
+          alert("Something went wrong. Please try again.");
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      });
+    })();
   </script>
 </body>
 </html>
