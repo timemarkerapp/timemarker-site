@@ -6,112 +6,65 @@
   <title>Time Market - Early Access</title>
   <style>
     :root {
-      --bg1: #0f1741;
-      --bg2: #2d1a62;
-      --bg3: #133b7a;
-      --text: #edefff;
-      --muted: #b8c0f2;
+      --bg1: #0f172e;
+      --bg2: #1a1a40;
+      --bg3: #6b21a8;
+      --text: #f8fafc;
+      --muted: #c7d2fe;
+      --accent: #a78bfa;
       --card: rgba(255, 255, 255, 0.08);
       --border: rgba(255, 255, 255, 0.18);
-      --accent: #7c3fff;
-      --accent-2: #a85fff;
-      --error: #ff6691;
-      --success: #65e98b;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html,
     body {
       margin: 0;
-      padding: 0;
-      width: 100%;
-      min-height: 100%;
-      font-family: Inter, System-UI, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       color: var(--text);
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(124, 63, 255, 0.35), #0000),
-                radial-gradient(1000px 600px at 90% 90%, rgba(51, 133, 255, 0.25), #0000),
-                linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 50%, var(--bg3) 100%);
-    }
-
-    body {
+      background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 45%, var(--bg3) 100%);
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
     }
 
-    .container {
+    .wrapper {
       width: 100%;
       max-width: 960px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 24px;
+    }
+
+    .card {
       background: var(--card);
       border: 1px solid var(--border);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-      overflow: hidden;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(4, 6, 24, 0.45);
     }
 
-    .wrap {
-      display: grid;
-      grid-template-columns: 1.2 fr 1fr;
-      min-height: 560px;
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
     }
 
-    .hero,
-    .form-section {
-      padding: 48px;
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
-    }
-
-    .badge {
-      align-self: flex-start;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 12px;
-      letter-spacing: 0.06rem;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 5vw, 50px);
-      line-height: 1.08;
-      margin: 0 0 18px;
-      letter-spacing: -0.02rem;
-    }
-
-    .hero p {
+    .subtitle {
       margin: 0;
       color: var(--muted);
-      font-size: 18px;
+      font-size: clamp(16px, 2vw, 19px);
       line-height: 1.6;
     }
 
-    .form-section {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .form-card {
-      width: 100%;
-      max-width: 360px;
-    }
-
-    .form-card h2 {
+    .form-title {
       margin: 0 0 18px;
-      font-size: 20px;
+      font-size: 22px;
     }
 
     .field {
@@ -120,182 +73,149 @@
 
     label {
       display: block;
-      font-size: 13px;
-      color: var(--muted);
+      font-size: 14px;
+      color: #e2e8f0;
       margin-bottom: 8px;
     }
 
-    input,
-    select,
-    .btn {
+    input, select {
       width: 100%;
+      padding: 12px 14px;
       border-radius: 12px;
       border: 1px solid var(--border);
-      font-size: 15px;
-      padding: 12px 13px;
-      outline: none;
-    }
-
-    input,
-    select {
-      background: rgba(0, 0, 0, 0.25);
+      background: rgba(15, 23, 42, 0.65);
       color: var(--text);
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    input::placeholder {
-      color: #9ba7d6;
-    }
-
-    input:focus,
-    select:focus {
+    input:focus, select:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 0 4px rgba(124, 63, 255, 0.25);
+      box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.25);
     }
 
-    .btn {
-      margin-top: 6px;
-      cursor: pointer;
+    button {
+      width: 100%;
+      padding: 13px 16px;
       border: none;
+      border-radius: 12px;
+      font-size: 16px;
       font-weight: 600;
       color: white;
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
-      transition: transform 0.08s ease, filter 0.2s ease;
+      background: linear-gradient(135deg, #6366f1, #a85cf9);
+      cursor: pointer;
+      transition: transform 0.06s ease, opacity 0.2s;
     }
 
-    .btn:hover {
-      filter: brightness(1.08);
-    }
-
-    .btn:active {
+    button:active {
       transform: translateY(1px);
     }
 
-    .btn[disabled] {
-      opacity: 0.7;
+    button[disabled] {
+      opacity: 0.75;
       cursor: not-allowed;
-    }
-
-    .status {
-      min-height: 20px;
-      margin-top: 10px;
-      font-size: 14px;
-    }
-
-    .status.error {
-      color: var(--error);
     }
 
     .success {
       display: none;
-      text-align: center;
-      padding: 22px 18px;
-      border: 1px solid rgba(101, 233, 139, 0.45);
-      background: rgba(101, 233, 139, 0.12);
-      border-radius: 14px;
-      color: var(--success);
+      margin: 0;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(34, 197, 94, 0.2);
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      color: #d1fae5;
       font-weight: 600;
-      font-size: 18px;
     }
 
-    @media (max-width: 900px) {
-      .wrap {
+    .error {
+      margin-top: 10px;
+      color: #fecaca;
+      font-size: 14px;
+      display: none;
+    }
+
+    @media (max-width: 880px) {
+      .wrapper {
         grid-template-columns: 1fr;
       }
-
-      .hero,
-      .form-section {
-        padding: 32px 24px;
-      }
-
-      .hero p {
-        font-size: 16px;
+      .card {
+        padding: 24px;
       }
     }
   </style>
 </head>
 <body>
-  <main class="container">
-    <div class="wrap">
-      <section class="hero">
-        <div class="badge">Time Market</div>
-        <h1>Talk to an expert in 5 minutes</h1>
-        <p>Join the early access waitlist for the app where you can instantly talk to professionals and pay only for the time you use.</p>
-      </section>
-      <section class="form-section">
-        <div class="form-card">
-          <h2>Join the waitlist</h2>
-          <form id="waitlistForm" novalidate>
-            <div class="field">
-              <label for="fullName">Full Name</label>
-              <input id="fullName" name="fullName" type="text" required placeholder="Alex Johnson" />
-            </div>
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" required placeholder="you@example.com" />
-            </div>
-            <div class="field">
-              <label for="role">Role</label>
-              <select id="role" name="role" required>
-                <option value="" selected disabled>Select your role</option>
-                <option value="Client">Client</option>
-                <option value="Expert">Expert</option>
-              </select>
-            </div>
-            <button id="submitBtn" class="btn" type="submit">Join Early Access</button>
-            <div id="status" class="status" aria-live="polite"></div>
-          </form>
-          <div id="success" class="success">You're on the waitlist!</div>
+  <main class="wrapper">
+    <section class="card">
+      <h1>Talk to an expert in 5 minutes</h1>
+      <p class="subtitle">Join the early access waitlist for the app where you can instantly talk to professionals and pay only for the time you use.</p>
+    </section>
+
+    <section class="card">
+      <h2 class="form-title">Join the waitlist</h2>
+      <form id="waitlistForm">
+        <div class="field">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" name="fullName" type="text" required autocomplete="name" />
         </div>
-      </section>
-    </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="role">Role</label>
+          <select id="role" name="role" required>
+            <option value="" selected disabled>Select your role</option>
+            <option value="Client">Client</option>
+            <option value="Expert">Expert</option>
+          </select>
+        </div>
+        <button type="submit" id="submitBtn">Join Early Access</button>
+        <p class="error" id="errorMsg">Something went wrong. Please try again.</p>
+      </form>
+      <p class="success" id="successMsg">You're on the waitlist!</p>
+    </section>
   </main>
 
   <script>
-    (function () {
-      const form = document.getElementById("waitlistForm");
-      const success = document.getElementById("success");
-      const status = document.getElementById("status");
-      const submitBtn = document.getElementById("submitBtn");
+    const form = document.getElementById('waitlistForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMsg = document.getElementById('successMsg');
+    const errorMsg = document.getElementById('errorMsg');
 
-      form.addEventListener("submit", async function (e) {
-        e.preventDefault();
-        status.textContent = "";
-        status.className = "status";
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errorMsg.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Joining...';
 
-        if (!form.reportValidity()) return;
+      const payload = {
+        full_name: document.getElementById('fullName').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        role: document.getElementById('role').value,
+        source: 'TikTok'
+      };
 
-        const payload = {
-          full_name: document.getElementById("fullName").value.trim(),
-          email: document.getElementById("email").value.trim(),
-          role: document.getElementById("role").value,
-          source: "TikTok"
-        };
+      try {
+        const res = await fetch('https://hook.us2.make.com/yn1wz8ymu4qct6cue8qq1mex27fkhhn66', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
 
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Submitting...";
+        if (!res.ok) throw new Error('Request failed');
 
-        try {
-          const res = await fetch("https://hook.us2.make.com/yn1wz8ymu4qct6cue8qk1mex27fkhn66", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(payload)
-          });
-
-          if (!res.ok) throw new Error("Request failed");
-
-          form.style.display = "none";
-          success.style.display = "block";
-        } catch (err) {
-          status.textContent = "Something went wrong. Please try again.";
-          status.className = "status error";
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Join Early Access";
-        }
-      });
-    })();
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+      } catch (err) {
+        errorMsg.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join Early Access';
+      }
+    });
   </script>
 </body>
 </html>
